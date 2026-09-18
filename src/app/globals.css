@@ -1,15 +1,30 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Enable class-based dark mode in Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-background: #F8F9FA;
-  --color-foreground: #1A1A1A;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
   --font-sans: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --background: #F8F9FA;
   --foreground: #1A1A1A;
+}
+
+.dark {
+  --background: #0A0A0A;
+  --foreground: #F8F9FA;
+}
+
+/* Smooth theme transitions globally */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
 
 html {
