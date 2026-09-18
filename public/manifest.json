@@ -1,0 +1,16 @@
+{
+  "name": "Jagmarg News",
+  "short_name": "Jagmarg",
+  "description": "Hyperlocal news for Haryana, Punjab, and India.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#D32F2F",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

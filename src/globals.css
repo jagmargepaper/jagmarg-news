@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: var(--font-geist-sans), var(--font-noto-dev), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular;
+}
+
+html[lang="hi"] body {
+  font-family: var(--font-noto-dev), sans-serif;
+}
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+html.dark body {
+  background-color: #0A0A0A !important;
+  color: #FFFFFF !important;
+}
+
+html.dark .debug-dark {
+  background-color: red !important;
+}

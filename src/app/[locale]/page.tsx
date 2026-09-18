@@ -1,0 +1,93 @@
+import { Metadata } from 'next';
+import Script from 'next/script';
+import BreakingNews from '@/components/BreakingNews';
+import WebStoriesRow from '@/components/WebStoriesRow';
+import EpaperAndVideo from '@/components/EpaperAndVideo';
+import HeroBentoGrid from '@/components/HeroBentoGrid';
+import AdSlot from '@/components/AdSlot';
+import NewsFeedLayout from '@/components/NewsFeedLayout';
+import { fetchPosts } from '@/lib/api';
+
+type Props = {
+  params: Promise<{ locale: string }>
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale || 'hi';
+  const canonicalUrl = locale === 'en' ? '/' : `/${locale}`;
+  return {
+    alternates: {
+      canonical: canonicalUrl,
+    }
+  };
+}
+
+export default async function Home({ params }: Props) {
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale || 'hi';
+  
+  // Fetch posts for the page
+  const posts = await fetchPosts(28);
+  const breakingNewsTitles = posts.slice(0, 5).map((p: any) => p.title.rendered.replace(/&[^;]+;/g, '')).filter(Boolean);
+
+  // Generate WebSite Schema for Google
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Jagmarg News",
+    "alternateName": "Har Khabar Ka Seedha Rasta",
+    "url": process.env.NEXT_PUBLIC_SITE_URL || "https://jagmarg.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${process.env.NEXT_PUBLIC_SITE_URL || "https://jagmarg.com"}/${locale}/search?q={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsMediaOrganization",
+    "name": "Jagmarg News",
+    "url": process.env.NEXT_PUBLIC_SITE_URL || "https://jagmarg.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${process.env.NEXT_PUBLIC_SITE_URL || "https://jagmarg.com"}/logo.png`,
+    }
+  };
+
+  return (
+    <>
+      <Script id="website-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <Script id="org-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+      
+      <main className="min-h-screen bg-[#F4F4F4] dark:bg-[#0A0A0A]">
+        {/* 1. BREAKING NEWS TICKER */}
+        <BreakingNews newsItems={breakingNewsTitles.length > 0 ? breakingNewsTitles : undefined} />
+
+        {/* 2. WEB STORIES ROW */}
+        <div className="mt-6">
+          <WebStoriesRow locale={locale} />
+        </div>
+
+        {/* 3. HERO BENTO GRID (Top 4 Posts) */}
+        <HeroBentoGrid posts={posts.slice(0, 4)} locale={locale} />
+        
+        {/* 4. AD BLOCK / BANNER */}
+        <div className="w-full max-w-[1280px] mx-auto px-4 md:px-6 mb-8 flex flex-col items-center justify-center">
+          <AdSlot size="leaderboard" id="home-middle-desktop" className="hidden md:flex my-0" />
+          <AdSlot size="mrec" id="home-middle-mobile" className="flex md:hidden my-0" />
+        </div>
+
+        {/* 5. EPAPER AND VIDEO */}
+        <EpaperAndVideo />
+
+        {/* 6. REMAINING NEWS FEED (INFINITE SCROLL) */}
+        <NewsFeedLayout initialPosts={posts.slice(4)} locale={locale} />
+      </main>
+    </>
+  );
+}
