@@ -167,7 +167,7 @@ export default function InfiniteArticleScroll({
         const articleUrl = getArticleUrl(post, locale);
 
         return (
-          <article key={post.id} data-slug={post.slug} data-url={articleUrl} className="pt-16 pb-16 border-t-4 border-gray-200 dark:border-gray-800 transition-colors">
+          <article key={post.id} data-slug={post.slug} data-url={articleUrl} className="bg-white dark:bg-[#111] p-6 md:p-10 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 mt-8 transition-colors">
             {category && (
               <Link href={`/${locale}/india/${category.slug}`} className="inline-block px-3 py-1 bg-[#D32F2F] text-white text-xs font-bold uppercase tracking-wider rounded-sm mb-6 hover:bg-[#b71c1c] transition-colors">
                 {category.name}
@@ -195,19 +195,19 @@ export default function InfiniteArticleScroll({
             </div>
 
             {imageUrl && (
-              <div className="relative w-full aspect-video mb-10 rounded-xl overflow-hidden shadow-lg">
+              <div className="relative w-full aspect-video mb-10 rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800">
                 <Image src={imageUrl} alt={title} fill className="object-cover" sizes="(max-width: 1200px) 100vw, 800px" />
               </div>
             )}
 
             <div 
               id={`content-${post.id}`}
-              className="prose prose-lg max-w-none text-gray-800 dark:text-gray-300 transition-colors prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-a:text-[#D32F2F] prose-img:rounded-xl"
+              className="prose prose-lg max-w-none text-gray-800 dark:text-gray-300 transition-colors prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-[#D32F2F] prose-img:rounded-xl"
               dangerouslySetInnerHTML={{ __html: content }}
             />
 
             <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 transition-colors">
-              <ShareButtons url={articleUrl} title={title} />
+              <ShareButtons url={articleUrl} title={title} size="large" />
             </div>
           </article>
         );
