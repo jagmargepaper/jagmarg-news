@@ -1,21 +1,26 @@
 import { NextResponse } from 'next/server';
 import { google } from 'googleapis';
-import key from '../../../../service-account.json'; // Adjust path depending on deployment
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { url, action } = body; // action should be 'URL_UPDATED' or 'URL_DELETED'
+    const { url, action } = body;
 
     if (!url) {
       return NextResponse.json({ error: 'URL is required' }, { status: 400 });
     }
 
-    // SECURITY CHECK: Add a secret token check here to prevent unauthorized pinging
     const authHeader = request.headers.get('authorization');
     if (authHeader !== `Bearer ${process.env.INDEXING_API_SECRET || 'dev_secret'}`) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+
+    // Parse service account from env, or gracefully exit if not configured
+    const serviceAccountJson = process.env.GOOGLE_SERVICE_ACCOUNT;
+    if (!serviceAccountJson) {
+      return NextResponse.json({ error: 'Google Service Account not configured in environment.' }, { status: 500 });
+    }
+    const key = JSON.parse(serviceAccountJson);
 
     // Configure the JWT client for Google Indexing API
     const jwtClient = new google.auth.JWT({
