@@ -34,11 +34,11 @@ export default function InfiniteArticleScroll({
       
       // Construct endpoint based on level
       if (fetchLevel === 'current' && categoryId) {
-        endpoint = `${wpUrl}/wp-json/wp/v2/posts?_embed&per_page=1&page=${targetPage}&categories=${categoryId}&exclude=${currentSlug}`;
+        endpoint = `${wpUrl}/wp-json/wp/v2/posts?_embed&per_page=1&page=${targetPage}&categories=${categoryId}`;
       } else if (fetchLevel === 'parent' && categoryParentId) {
-        endpoint = `${wpUrl}/wp-json/wp/v2/posts?_embed&per_page=1&page=${targetPage}&categories=${categoryParentId}&exclude=${currentSlug}`;
+        endpoint = `${wpUrl}/wp-json/wp/v2/posts?_embed&per_page=1&page=${targetPage}&categories=${categoryParentId}`;
       } else {
-        endpoint = `${wpUrl}/wp-json/wp/v2/posts?_embed&per_page=1&page=${targetPage}&exclude=${currentSlug}`;
+        endpoint = `${wpUrl}/wp-json/wp/v2/posts?_embed&per_page=1&page=${targetPage}`;
       }
 
       const res = await fetch(endpoint);
@@ -73,7 +73,14 @@ export default function InfiniteArticleScroll({
       } else {
         setNextArticles(prev => {
           const existingIds = new Set(prev.map(p => p.id));
-          const newUnique = data.filter((p: any) => !existingIds.has(p.id));
+          // Filter out duplicates and the current article being viewed
+          const newUnique = data.filter((p: any) => !existingIds.has(p.id) && p.slug !== currentSlug);
+          
+          if (newUnique.length === 0) {
+            // If the only article fetched was the current one, trigger next fetch
+            setPage(targetPage);
+            return prev;
+          }
           return [...prev, ...newUnique];
         });
         setPage(targetPage);
