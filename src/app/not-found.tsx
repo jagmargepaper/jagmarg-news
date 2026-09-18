@@ -9,13 +9,13 @@ export default function NotFound() {
         
         {/* Minimal Header */}
         <header className="w-full bg-white dark:bg-[#111] shadow-sm py-4 px-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-800">
-          <Link href="/hi" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <div className="w-10 h-10 bg-[#D32F2F] rounded-lg flex items-center justify-center text-white font-bold text-2xl">
-              ज
+              JN
             </div>
             <span className="font-black text-2xl tracking-tight">Jagmarg<span className="text-[#D32F2F]">.</span></span>
           </Link>
-          <Link href="/hi/search" className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+          <Link href="/search" className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
             <Search className="w-5 h-5" />
           </Link>
         </header>
@@ -29,7 +29,7 @@ export default function NotFound() {
             </div>
             
             <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">
-              Khabar Nahi Mili
+              Page Not Found / Khabar Nahi Mili
             </h2>
             
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-xl mx-auto">
@@ -38,7 +38,7 @@ export default function NotFound() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
               <Link 
-                href="/hi" 
+                href="/" 
                 className="group flex items-center justify-center gap-3 px-6 py-4 bg-[#D32F2F] text-white font-bold rounded-xl hover:bg-red-700 transition-all shadow-lg hover:shadow-red-900/20 active:scale-95"
               >
                 <Home className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
@@ -46,7 +46,7 @@ export default function NotFound() {
               </Link>
               
               <Link 
-                href="/hi" 
+                href="/" 
                 className="group flex items-center justify-center gap-3 px-6 py-4 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white font-bold rounded-xl hover:bg-gray-50 dark:hover:bg-[#222] border border-gray-200 dark:border-gray-800 transition-all shadow-sm active:scale-95"
               >
                 <TrendingUp className="w-5 h-5 text-[#D32F2F] group-hover:scale-110 transition-transform" />

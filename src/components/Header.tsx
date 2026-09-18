@@ -442,7 +442,7 @@ export default function Header() {
               <div className="flex items-center h-full flex-1 overflow-x-auto hide-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {/* 3. NATIONAL (Always next to State) */}
                 <Link 
-                  href={`/${locale}/category/national`} 
+                  href={`/${locale}/india/national`} 
                   className="h-full flex items-center px-1.5 lg:px-2 text-[10px] lg:text-[11px] font-black uppercase text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 transition-colors border-r border-gray-200 notranslate whitespace-nowrap flex-shrink-0"
                 >
                   {getTranslatedUI('National', locale)}
