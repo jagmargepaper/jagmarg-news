@@ -13,6 +13,7 @@ export default function AuthModal() {
   const { view, closeModal, openPayment } = useAuthModal();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
+  const [selectedPlan, setSelectedPlan] = useState('149');
   const router = useRouter();
 
   React.useEffect(() => {
@@ -47,12 +48,80 @@ export default function AuthModal() {
     await signIn('google', { callbackUrl: `${window.location.pathname}?payment=true` });
   };
 
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      if ((window as any).Razorpay) {
+        resolve(true);
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
   const handlePayment = async () => {
     setLoading(true);
-    // Simulate Razorpay Delay
-    await new Promise(res => setTimeout(res, 1000));
-    setLoading(false);
-    alert('Payment Gateway Integration Pending. Razorpay link will be connected here soon!');
+    
+    // 1. Load Razorpay script
+    const res = await loadRazorpayScript();
+    if (!res) {
+      alert('Razorpay SDK failed to load. Are you online?');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      // 2. Create order on backend
+      const orderResponse = await fetch('/api/razorpay/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan: 'Premium', amount: parseInt(selectedPlan) }),
+      });
+      
+      const orderData = await orderResponse.json();
+      
+      if (!orderData.orderId) {
+        throw new Error('Server failed to create order');
+      }
+
+      // 3. Open Razorpay Checkout Modal
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Use public key from env
+        amount: orderData.amount,
+        currency: 'INR',
+        name: 'Jagmarg News',
+        description: 'Premium Ad-Free Subscription',
+        image: '/logo.png',
+        order_id: orderData.orderId,
+        handler: function (response: any) {
+          alert(`Payment Successful! Payment ID: ${response.razorpay_payment_id}`);
+          closeModal();
+        },
+        prefill: {
+          name: 'Jagmarg Reader',
+          email: email || 'reader@jagmarg.com',
+          contact: '9999999999'
+        },
+        theme: {
+          color: '#D32F2F'
+        }
+      };
+
+      const paymentObject = new (window as any).Razorpay(options);
+      paymentObject.on('payment.failed', function (response: any) {
+        alert(`Payment Failed: ${response.error.description}`);
+      });
+      
+      paymentObject.open();
+    } catch (error) {
+      console.error(error);
+      alert('Could not initiate payment. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
