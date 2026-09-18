@@ -23,7 +23,13 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://jagmarg.com'),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL 
+      ? process.env.NEXT_PUBLIC_SITE_URL 
+      : process.env.NEXT_PUBLIC_VERCEL_URL 
+        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` 
+        : 'https://jagmarg.com'
+  ),
   title: {
     default: "Jagmarg News - Har Khabar Ka Seedha Rasta",
     template: "%s | Jagmarg News"
