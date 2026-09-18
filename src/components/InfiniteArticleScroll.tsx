@@ -134,12 +134,15 @@ export default function InfiniteArticleScroll({
     };
   }, [nextArticles, locale]);
 
-  if (nextArticles.length === 0 && !isLoading) {
-      return (
-          <div ref={observerTarget} className="flex justify-center p-8">
-             <Loader2 className="w-8 h-8 animate-spin text-[#D32F2F]" />
-          </div>
-      )
+  if (nextArticles.length === 0) {
+    if (!hasMore) {
+      return null;
+    }
+    return (
+      <div ref={observerTarget} className="flex justify-center p-8">
+         <Loader2 className="w-8 h-8 animate-spin text-[#D32F2F]" />
+      </div>
+    );
   }
 
   return (
