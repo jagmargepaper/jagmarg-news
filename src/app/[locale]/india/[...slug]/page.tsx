@@ -9,6 +9,7 @@ import ShareButtons from '@/components/ShareButtons';
 import InfiniteArticleScroll from '@/components/InfiniteArticleScroll';
 import NewsFeedLayout from '@/components/NewsFeedLayout';
 import SidebarWidget from '@/components/SidebarWidget';
+import PaywalledArticleContent from '@/components/PaywalledArticleContent';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string[] }> }): Promise<Metadata> {
   const resolvedParams = await params;
@@ -135,14 +136,7 @@ async function PostTemplate({ post, locale, currentSlug }: { post: any, locale: 
               )}
 
               {/* Content */}
-              <div 
-                className="article-content prose prose-lg dark:prose-invert max-w-none 
-                  prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white
-                  prose-a:text-[#D32F2F] hover:prose-a:text-[#b71c1c]
-                  prose-img:rounded-xl prose-img:shadow-md
-                  prose-p:text-gray-800 dark:prose-p:text-gray-200 prose-p:leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: content }}
-              />
+              <PaywalledArticleContent content={content} postId={post.id} />
               
               {/* Bottom Share Buttons */}
               <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">

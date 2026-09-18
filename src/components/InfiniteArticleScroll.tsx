@@ -7,6 +7,7 @@ import { Loader2 } from 'lucide-react';
 import AIQuickSummary from './AIQuickSummary';
 import ArticleAudioPlayer from './ArticleAudioPlayer';
 import ShareButtons from './ShareButtons';
+import PaywalledArticleContent from './PaywalledArticleContent';
 import { getArticleUrl } from '@/lib/api';
 
 export default function InfiniteArticleScroll({ 
@@ -200,10 +201,10 @@ export default function InfiniteArticleScroll({
               </div>
             )}
 
-            <div 
-              id={`content-${post.id}`}
-              className="prose prose-lg max-w-none text-gray-800 dark:text-gray-300 transition-colors prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-[#D32F2F] prose-img:rounded-xl"
-              dangerouslySetInnerHTML={{ __html: content }}
+            <PaywalledArticleContent 
+              content={content} 
+              postId={post.id} 
+              id={`content-${post.id}`} 
             />
 
             <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 transition-colors">
