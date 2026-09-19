@@ -282,14 +282,14 @@ export default function Header() {
             {/* Left: Logo (Centered in available space) */}
             <div className="flex-1 flex justify-center lg:justify-center md:justify-start">
               <Link href={`/${locale}`} onClick={() => handleEditionChange('National')}>
-                <Image 
-                  src="/logo.png" 
-                  alt="Jagmarg News Logo" 
-                  width={220}
-                  height={88}
-                  priority
-                  className="h-16 md:h-24 w-auto object-contain cursor-pointer hover:opacity-95 transition-opacity" 
-                />
+                  <Image 
+                    src="/logo.png" 
+                    alt="Jagmarg News Logo" 
+                    width={220}
+                    height={88}
+                    priority
+                    className="h-16 md:h-24 w-auto object-contain cursor-pointer hover:opacity-95 transition-all dark:bg-white/90 dark:p-1.5 dark:rounded-lg" 
+                  />
               </Link>
             </div>
 
@@ -509,7 +509,7 @@ export default function Header() {
                   width={140}
                   height={45}
                   priority
-                  className="h-8 sm:h-9 w-auto object-contain dark:invert transition-all" 
+                  className="h-8 sm:h-9 w-auto object-contain transition-all dark:bg-white/90 dark:p-1 dark:rounded" 
                 />
               </Link>
 

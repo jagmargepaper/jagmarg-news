@@ -41,7 +41,7 @@ export default function Footer() {
                 <img 
                   src="/logo.png" 
                   alt="Jagmarg News" 
-                  className="h-16 md:h-20 w-auto object-contain hover:opacity-90 transition-opacity" 
+                  className="h-16 md:h-20 w-auto object-contain hover:opacity-90 transition-all dark:bg-white/90 dark:p-1.5 dark:rounded-lg" 
                 />
               </Link>
               <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed max-w-sm">
