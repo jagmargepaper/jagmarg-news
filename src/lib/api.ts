@@ -170,33 +170,50 @@ export async function getArticleUrl(post: any, locale: string = 'hi') {
 
 export async function getLatestYouTubeVideos(channelId: string) {
   try {
-    const res = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, {
-      next: { revalidate: 3600 }
-    });
-    
-    if (res.ok) {
-      const text = await res.text();
-      const entries = text.split('<entry>').slice(1);
+    const apiKey = process.env.YOUTUBE_API_KEY;
+    if (apiKey) {
+      // Fetch from official YouTube Data API
+      const res = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=8&type=video`, {
+        next: { revalidate: 3600 } // Cache for 1 hour
+      });
       
-      const videos = entries.map(entry => {
-        const idMatch = entry.match(/<yt:videoId>(.*?)<\/yt:videoId>/);
-        const titleMatch = entry.match(/<title>(.*?)<\/title>/);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.items && data.items.length > 0) {
+          return data.items.map((item: any) => ({
+            id: item.id.videoId,
+            // Decode HTML entities commonly found in youtube titles
+            title: item.snippet.title.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+          }));
+        }
+      }
+    } else {
+      // Old RSS attempt fallback if API key is not present
+      const res = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, {
+        next: { revalidate: 3600 }
+      });
+      
+      if (res.ok) {
+        const text = await res.text();
+        const entries = text.split('<entry>').slice(1);
         
-        return {
-          id: idMatch ? idMatch[1] : '',
-          title: titleMatch ? titleMatch[1] : ''
-        };
-      }).filter(v => v.id);
-      
-      if (videos.length > 0) return videos;
+        const videos = entries.map(entry => {
+          const idMatch = entry.match(/<yt:videoId>(.*?)<\/yt:videoId>/);
+          const titleMatch = entry.match(/<title>(.*?)<\/title>/);
+          return {
+            id: idMatch ? idMatch[1] : '',
+            title: titleMatch ? titleMatch[1] : ''
+          };
+        }).filter(v => v.id);
+        
+        if (videos.length > 0) return videos;
+      }
     }
   } catch (err) {
     console.error('Error fetching youtube:', err);
   }
 
-  // Fallback: If RSS is 404ing (which happens for some channels without standard feeds),
-  // we return the actual latest videos hardcoded for Dainik Jagmarg to ensure they display.
-  // In production, this can be replaced by a youtube data API call.
+  // Fallback if API fails, limit reached, or RSS fails
   return [
     {
       "id": "qSx7mxg3a5c",
