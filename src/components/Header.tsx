@@ -275,17 +275,12 @@ export default function Header() {
           </div>
         </div>
 
-        {/* 2. MAIN BRANDING ROW (Logo & Ad Only) */}
+        {/* 2. MAIN BRANDING ROW (Logo Centered) */}
         <div className="w-full bg-white dark:bg-[#111111] border-b border-gray-200 dark:border-gray-800 hidden md:block">
-          <div className="max-w-[1600px] mx-auto px-6 py-4 flex items-center justify-between gap-4 xl:gap-8">
+          <div className="max-w-[1600px] mx-auto px-6 py-4 flex items-center justify-center">
             
-            {/* Left Ad */}
-            <div className="flex-1 flex justify-end">
-               <AdSlot size="header_side" id="header-left" className="my-0 hidden lg:flex" />
-            </div>
-
             {/* Center Logo */}
-            <div className="flex-shrink-0 flex justify-center px-4">
+            <div className="flex justify-center">
               <Link href={`/${locale}`} onClick={() => handleEditionChange('National')}>
                   <Image 
                     src="/logo.png" 
@@ -296,11 +291,6 @@ export default function Header() {
                     className="h-24 md:h-28 lg:h-32 w-auto object-contain cursor-pointer hover:opacity-95 transition-all dark:bg-white/90 dark:p-1.5 dark:rounded-lg" 
                   />
               </Link>
-            </div>
-
-            {/* Right Ad */}
-            <div className="flex-1 flex justify-start">
-               <AdSlot size="header_side" id="header-right" className="my-0 hidden lg:flex" />
             </div>
 
           </div>
