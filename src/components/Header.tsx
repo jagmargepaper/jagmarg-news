@@ -277,24 +277,31 @@ export default function Header() {
 
         {/* 2. MAIN BRANDING ROW (Logo & Ad Only) */}
         <div className="w-full bg-white dark:bg-[#111111] border-b border-gray-200 dark:border-gray-800 hidden md:block">
-          <div className="max-w-[1400px] mx-auto px-6 h-28 md:h-32 flex items-center justify-between">
+          <div className="max-w-[1600px] mx-auto px-6 py-4 flex items-center justify-between gap-6">
             
-            {/* Left: Logo (Centered in available space) */}
-            <div className="flex-1 flex justify-center lg:justify-center md:justify-start">
+            {/* Left Ad */}
+            <div className="flex-1 flex justify-start">
+               <AdSlot size="header_side" id="header-left" className="my-0 hidden lg:flex" />
+            </div>
+
+            {/* Center Logo */}
+            <div className="flex-shrink-0 flex justify-center">
               <Link href={`/${locale}`} onClick={() => handleEditionChange('National')}>
                   <Image 
                     src="/logo.png" 
                     alt="Jagmarg News Logo" 
-                    width={220}
-                    height={88}
+                    width={400}
+                    height={209}
                     priority
-                    className="h-16 md:h-24 w-auto object-contain cursor-pointer hover:opacity-95 transition-all dark:bg-white/90 dark:p-1.5 dark:rounded-lg" 
+                    className="h-24 md:h-28 lg:h-32 w-auto object-contain cursor-pointer hover:opacity-95 transition-all dark:bg-white/90 dark:p-1.5 dark:rounded-lg" 
                   />
               </Link>
             </div>
 
-            {/* Right: Premium Header Ad (728x90 Leaderboard) */}
-            <AdSlot size="leaderboard" id="header-main" className="ml-4 my-0 hidden lg:flex" />
+            {/* Right Ad */}
+            <div className="flex-1 flex justify-end">
+               <AdSlot size="header_side" id="header-right" className="my-0 hidden lg:flex" />
+            </div>
 
           </div>
         </div>
@@ -506,10 +513,10 @@ export default function Header() {
                 <Image 
                   src="/logo.png" 
                   alt="Jagmarg News Logo" 
-                  width={140}
-                  height={45}
+                  width={200}
+                  height={104}
                   priority
-                  className="h-8 sm:h-9 w-auto object-contain transition-all dark:bg-white/90 dark:p-1 dark:rounded" 
+                  className="h-10 sm:h-12 w-auto object-contain transition-all dark:bg-white/90 dark:p-1 dark:rounded" 
                 />
               </Link>
 

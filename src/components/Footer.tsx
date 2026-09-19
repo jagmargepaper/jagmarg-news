@@ -36,13 +36,13 @@ export default function Footer() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
             
             {/* Brand Column (4 Cols) */}
-            <div className="lg:col-span-4 flex flex-col gap-6">
+            <div className="lg:col-span-4 flex flex-col items-center text-center gap-6">
               <Link href={`/${locale}`} className="inline-block">
-                <img 
-                  src="/logo.png" 
-                  alt="Jagmarg News" 
-                  className="h-16 md:h-20 w-auto object-contain hover:opacity-90 transition-all dark:bg-white/90 dark:p-1.5 dark:rounded-lg" 
-                />
+                  <img 
+                    src="/logo.png" 
+                    alt="Jagmarg News" 
+                    className="h-20 md:h-24 w-auto object-contain hover:opacity-90 transition-all dark:bg-white/90 dark:p-1.5 dark:rounded-lg" 
+                  />
               </Link>
               <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed max-w-sm">
                 Jagmarg is India's most trusted digital news destination. From hyper-local updates in Haryana and Punjab to global breaking news, we bring you the truth, unfiltered and fast.
