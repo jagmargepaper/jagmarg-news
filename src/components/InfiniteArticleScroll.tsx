@@ -184,7 +184,7 @@ export default function InfiniteArticleScroll({
                 <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center font-bold text-gray-500 transition-colors">
                   {author.charAt(0)}
                 </div>
-                <span className="font-semibold text-gray-900 dark:text-gray-200 transition-colors">{author}</span>
+                <span className="font-semibold text-gray-900 dark:text-gray-100 dark:text-gray-200 transition-colors">{author}</span>
               </div>
               <span className="hidden sm:inline">•</span>
               <time>{date}</time>

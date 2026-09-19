@@ -75,7 +75,7 @@ async function PostTemplate({ post, locale, currentSlug }: { post: any, locale: 
   const category = post._embedded?.['wp:term']?.[0]?.[0];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-[#0A0A0A] pt-12 pb-16">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 dark:bg-[#0A0A0A] pt-12 pb-16">
       <div className="max-w-[1400px] mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12">
           
@@ -83,7 +83,7 @@ async function PostTemplate({ post, locale, currentSlug }: { post: any, locale: 
           <div className="hidden lg:flex lg:col-span-2 flex-col gap-6 sticky top-24 h-fit">
             <div className="w-full h-[600px] bg-white dark:bg-[#1A1A1A] flex flex-col items-center justify-center border border-gray-200 dark:border-gray-800 shadow-sm relative overflow-hidden">
               <span className="relative z-10 text-[10px] tracking-widest font-bold uppercase text-gray-400 mb-1">Advertisement</span>
-              <span className="relative z-10 text-xs font-black tracking-widest text-gray-300 dark:text-gray-600">160 x 600</span>
+              <span className="relative z-10 text-xs font-black tracking-widest text-gray-300 dark:text-gray-600 dark:text-gray-400">160 x 600</span>
             </div>
             <div className="bg-white dark:bg-[#111] p-4 border border-gray-200 dark:border-gray-800 shadow-sm flex flex-col items-center gap-4">
               <span className="text-xs font-bold uppercase tracking-widest text-gray-500">Share</span>
@@ -113,7 +113,7 @@ async function PostTemplate({ post, locale, currentSlug }: { post: any, locale: 
                   <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center font-bold text-gray-500">
                     {author.charAt(0)}
                   </div>
-                  <span className="font-semibold text-gray-900 dark:text-gray-200">{author}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-100 dark:text-gray-200">{author}</span>
                 </div>
                 <span className="hidden sm:inline">•</span>
                 <time>{date}</time>
@@ -155,7 +155,7 @@ async function PostTemplate({ post, locale, currentSlug }: { post: any, locale: 
           <div className="lg:col-span-3 flex flex-col gap-8">
             <div className="w-full h-[250px] bg-white dark:bg-[#1A1A1A] flex flex-col items-center justify-center border border-gray-200 dark:border-gray-800 shadow-sm relative overflow-hidden">
               <span className="relative z-10 text-[10px] tracking-widest font-bold uppercase text-gray-400 mb-1">Advertisement</span>
-              <span className="relative z-10 text-xs font-black tracking-widest text-gray-300 dark:text-gray-600">300 x 250</span>
+              <span className="relative z-10 text-xs font-black tracking-widest text-gray-300 dark:text-gray-600 dark:text-gray-400">300 x 250</span>
             </div>
 
             {category && (
@@ -177,7 +177,7 @@ async function CategoryTemplate({ term, locale, isTag }: { term: any, locale: st
     : await fetchPostsByCategory(term.id, 20, 1);
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-[#0A0A0A] pt-8">
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 dark:bg-[#0A0A0A] pt-8">
       {/* State/Category Header */}
       <div className="bg-[#1A1A1A] text-white py-12 px-4 mb-8">
         <div className="max-w-[1400px] mx-auto">

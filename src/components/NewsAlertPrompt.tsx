@@ -96,7 +96,7 @@ export default function NewsAlertPrompt() {
             {/* Close Button */}
             <button 
               onClick={handleDismiss}
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors"
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -119,7 +119,7 @@ export default function NewsAlertPrompt() {
             <div className="mt-5 flex gap-3">
               <button 
                 onClick={handleDismiss}
-                className="flex-1 px-4 py-2 text-xs font-bold text-gray-500 hover:bg-gray-50 rounded-lg transition-colors border border-gray-200"
+                className="flex-1 px-4 py-2 text-xs font-bold text-gray-500 hover:bg-gray-50 dark:bg-gray-900 rounded-lg transition-colors border border-gray-200"
               >
                 Later
               </button>

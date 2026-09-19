@@ -120,7 +120,7 @@ export default function StoryViewer({ slides, locale }: StoryViewerProps) {
             {slides[currentIndex].text}
           </p>
           <div className="w-full flex justify-center mb-2">
-             <button className="pointer-events-auto bg-white text-black px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
+             <button className="pointer-events-auto bg-white text-black dark:text-white px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
                Read Full Article
              </button>
           </div>

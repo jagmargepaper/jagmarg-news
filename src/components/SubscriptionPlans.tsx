@@ -117,7 +117,7 @@ export default function SubscriptionPlans({ locale }: { locale: string }) {
           <h1 className="text-4xl md:text-5xl font-black text-[#1A1A1A] uppercase tracking-tight mb-4">
             Choose Your <span className="text-[#D32F2F]">Premium</span> Plan
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
             Get unlimited access to exclusive news, ad-free reading, and daily e-papers. Support independent journalism.
           </p>
         </div>
@@ -145,7 +145,7 @@ export default function SubscriptionPlans({ locale }: { locale: string }) {
 
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3 text-gray-700">
+                    <li key={i} className="flex items-start gap-3 text-gray-700 dark:text-gray-300">
                       <div className="mt-1 bg-green-100 rounded-full p-0.5">
                         <Check className="w-3 h-3 text-green-700" strokeWidth={3} />
                       </div>
@@ -189,7 +189,7 @@ export default function SubscriptionPlans({ locale }: { locale: string }) {
               <Check className="w-8 h-8" strokeWidth={3} />
             </div>
             <h2 className="text-2xl font-black text-[#1A1A1A] mb-2 uppercase tracking-tight">Payment Successful!</h2>
-            <p className="text-gray-600 font-medium mb-8">You are now a premium member of Jagmarg News.</p>
+            <p className="text-gray-600 dark:text-gray-400 font-medium mb-8">You are now a premium member of Jagmarg News.</p>
             <Link 
               href={`/${locale}/dashboard`}
               className="w-full inline-block bg-[#1A1A1A] hover:bg-black text-white font-black uppercase tracking-widest text-sm py-4 rounded-xl transition-all"

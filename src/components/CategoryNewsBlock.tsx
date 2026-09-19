@@ -93,7 +93,7 @@ export default function CategoryNewsBlock({
           <div className="w-1.5 h-6 sm:h-8 bg-gray-200"></div>
           <div className="h-8 w-48 bg-gray-200 rounded"></div>
         </div>
-        <div className="w-full h-[400px] bg-gray-50 animate-pulse border border-gray-100" />
+        <div className="w-full h-[400px] bg-gray-50 dark:bg-gray-900 animate-pulse border border-gray-100" />
       </div>
     );
   }

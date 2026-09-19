@@ -12,17 +12,17 @@ export default async function EPaperPage({ params }: { params: Promise<{ locale:
   const locale = resolvedParams.locale;
 
   return (
-    <main className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
       <div className="bg-white max-w-2xl w-full p-8 md:p-16 rounded-2xl shadow-xl text-center border border-gray-100">
         <div className="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-8">
           <Newspaper className="w-12 h-12 text-[#D32F2F]" />
         </div>
         
-        <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight">
+        <h1 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-100 mb-6 tracking-tight">
           E-Paper Coming <span className="text-[#D32F2F]">Soon</span>
         </h1>
         
-        <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto leading-relaxed">
+        <p className="text-lg text-gray-600 dark:text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">
           We are upgrading our digital reading experience. Our new high-resolution, interactive E-Paper will be available here shortly. Stay tuned!
         </p>
         

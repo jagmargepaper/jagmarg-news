@@ -7,6 +7,11 @@ export default function ArticleContent({ html, isPaywall }: { html: string, isPa
   const [fontSize, setFontSize] = useState<'sm' | 'base' | 'lg'>('base');
   const [reaction, setReaction] = useState<string | null>(null);
   
+  // Clean up WP inline black/dark colors so dark mode prose-invert works
+  const cleanHtml = html
+    .replace(/style="[^"]*color:\s*(?:black|#000000|#222222|#333333)[^"]*"/gi, '')
+    .replace(/color:\s*(?:black|#000000|#222222|#333333);?/gi, '');
+
   const sizeClasses = {
     sm: 'prose-sm',
     base: 'prose-base',
@@ -46,7 +51,7 @@ export default function ArticleContent({ html, isPaywall }: { html: string, isPa
       {/* Article Content */}
       <div 
         className={`prose dark:prose-invert max-w-none ${sizeClasses[fontSize]} transition-all duration-300 ${isPaywall ? 'blur-sm select-none pointer-events-none' : ''}`}
-        dangerouslySetInnerHTML={{ __html: html }} 
+        dangerouslySetInnerHTML={{ __html: cleanHtml }} 
       />
       
       {/* Post-Article Interactive Elements */}
@@ -76,7 +81,7 @@ export default function ArticleContent({ html, isPaywall }: { html: string, isPa
                   }`}
                 >
                   <span className="text-3xl sm:text-4xl">{item.emoji}</span>
-                  <span className="text-xs font-medium text-gray-600 dark:text-gray-300">{item.label}</span>
+                  <span className="text-xs font-medium text-gray-600 dark:text-gray-400 dark:text-gray-300">{item.label}</span>
                 </button>
               ))}
             </div>

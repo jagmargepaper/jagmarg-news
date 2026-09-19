@@ -28,7 +28,7 @@ export default async function StatePage({ params }: { params: { state: string } 
             <Link 
               key={district}
               href={`/${state.toLowerCase()}/${district.toLowerCase()}`}
-              className="bg-gray-50 border border-gray-200 p-4 text-center hover:bg-[#D32F2F] hover:text-white transition-colors group"
+              className="bg-gray-50 dark:bg-gray-900 border border-gray-200 p-4 text-center hover:bg-[#D32F2F] hover:text-white transition-colors group"
             >
               <h3 className="font-bold text-sm uppercase tracking-wider">{district}</h3>
               <p className="text-[10px] text-gray-400 mt-1 group-hover:text-red-200 uppercase tracking-widest">View News</p>

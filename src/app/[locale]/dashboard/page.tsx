@@ -39,13 +39,13 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
               <p className="text-gray-500">{session.user.email}</p>
               
               <div className="mt-2 flex gap-2">
-                <span className={`text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest ${isPremium ? 'bg-yellow-400 text-black' : 'bg-gray-200 text-gray-600'}`}>
+                <span className={`text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest ${isPremium ? 'bg-yellow-400 text-black dark:text-white' : 'bg-gray-200 text-gray-600 dark:text-gray-400'}`}>
                   {isPremium ? '👑 Premium Member' : '👤 Free Member'}
                 </span>
               </div>
             </div>
           </div>
-          <button className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-bold text-sm transition-colors flex items-center gap-2">
+          <button className="bg-gray-100 hover:bg-gray-200 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-lg font-bold text-sm transition-colors flex items-center gap-2">
             <Edit3 className="w-4 h-4" /> Edit Profile
           </button>
         </div>
@@ -56,7 +56,7 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
               <h3 className="text-lg font-black uppercase tracking-wider mb-6 flex items-center gap-2">
                 <Shield className="w-5 h-5 text-[#D32F2F]" /> Active Plan
               </h3>
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
+              <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-xl border border-gray-200">
                 <p className="text-gray-500 text-sm font-bold uppercase tracking-widest mb-1">Current Package</p>
                 <p className="text-2xl font-black text-[#1A1A1A] mb-4 capitalize">{(session.user as any).planType || 'Pro Pass'}</p>
                 
@@ -71,13 +71,13 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
               <h3 className="text-lg font-black uppercase tracking-wider mb-6">Quick Actions</h3>
               <div className="space-y-4">
-                <Link href={`/${locale}/epaper`} className="w-full flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+                <Link href={`/${locale}/epaper`} className="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-gray-100 transition-colors group">
                   <span className="font-bold text-[#1A1A1A]">Read Daily E-Paper</span>
-                  <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-black transition-colors" />
+                  <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-black dark:text-white transition-colors" />
                 </Link>
-                <button className="w-full flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group text-left">
+                <button className="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-gray-100 transition-colors group text-left">
                   <span className="font-bold text-[#1A1A1A]">Update Contact Number</span>
-                  <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-black transition-colors" />
+                  <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-black dark:text-white transition-colors" />
                 </button>
               </div>
             </div>

@@ -185,7 +185,7 @@ export default function NewsFeedLayout({
                   {showAdAfter && (
                     <div className="w-full h-[120px] bg-gray-100 dark:bg-[#1A1A1A] flex flex-col items-center justify-center border border-gray-200 dark:border-gray-800 relative overflow-hidden mb-10">
                       <span className="relative z-10 text-[10px] tracking-widest font-bold uppercase text-gray-400 mb-1">Advertisement</span>
-                      <span className="relative z-10 text-xs font-black tracking-widest text-gray-300 dark:text-gray-600">728 x 90</span>
+                      <span className="relative z-10 text-xs font-black tracking-widest text-gray-300 dark:text-gray-600 dark:text-gray-400">728 x 90</span>
                     </div>
                   )}
                 </React.Fragment>
@@ -217,7 +217,7 @@ export default function NewsFeedLayout({
                     {showInlineAd && (
                       <div className="col-span-1 md:col-span-2 w-full h-[120px] bg-gray-100 dark:bg-[#1A1A1A] flex flex-col items-center justify-center border border-gray-200 dark:border-gray-800 relative overflow-hidden my-2">
                         <span className="relative z-10 text-[10px] tracking-widest font-bold uppercase text-gray-400 mb-1">Advertisement</span>
-                        <span className="relative z-10 text-xs font-black tracking-widest text-gray-300 dark:text-gray-600">728 x 90</span>
+                        <span className="relative z-10 text-xs font-black tracking-widest text-gray-300 dark:text-gray-600 dark:text-gray-400">728 x 90</span>
                       </div>
                     )}
                   </React.Fragment>
@@ -261,7 +261,7 @@ export default function NewsFeedLayout({
                   {showAd && (
                     <div className="w-[300px] h-[250px] bg-gray-100 dark:bg-[#1A1A1A] flex flex-col items-center justify-center border border-gray-200 dark:border-gray-800 relative overflow-hidden">
                       <span className="relative z-10 text-[10px] tracking-widest font-bold uppercase text-gray-400 mb-1">Advertisement</span>
-                      <span className="relative z-10 text-xs font-black tracking-widest text-gray-300 dark:text-gray-600">300 x 250</span>
+                      <span className="relative z-10 text-xs font-black tracking-widest text-gray-300 dark:text-gray-600 dark:text-gray-400">300 x 250</span>
                     </div>
                   )}
                 </div>

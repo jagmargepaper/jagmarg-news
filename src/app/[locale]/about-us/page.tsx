@@ -8,10 +8,10 @@ export const metadata: Metadata = {
 export default function AboutUs() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-12 bg-white mt-10 shadow-sm rounded-lg">
-      <h1 className="text-4xl font-bold mb-6 text-gray-900 border-b pb-4">About Jagmarg News</h1>
+      <h1 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100 border-b pb-4">About Jagmarg News</h1>
       
-      <div className="prose prose-lg max-w-none text-gray-700">
-        <p className="lead text-xl text-gray-600 mb-8 font-medium">
+      <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-300">
+        <p className="lead text-xl text-gray-600 dark:text-gray-400 mb-8 font-medium">
           "Har Khabar Ka Seedha Rasta"
         </p>
 
@@ -22,14 +22,14 @@ export default function AboutUs() {
           that impacts their daily lives.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900">Our Mission</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">Our Mission</h2>
         <p className="mb-6">
           To empower the public with the truth. From breaking political developments to local 
           crime reports, entertainment, and sports, we bring the news to you instantly without 
           compromising on accuracy or ethical standards.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900">Ownership & Funding</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">Ownership & Funding</h2>
         <p className="mb-6">
           Jagmarg News is an independent digital media organization. We are privately owned and 
           funded through a mix of private investments, digital advertising, and future subscription models. 
@@ -37,7 +37,7 @@ export default function AboutUs() {
           unbiased and free from corporate or political pressures.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900">Our Editorial Standards</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">Our Editorial Standards</h2>
         <p className="mb-6">
           We operate under strict journalistic guidelines aligned with global E-E-A-T (Experience, Expertise, 
           Authoritativeness, and Trustworthiness) principles. Please review our core policies to understand 
@@ -49,8 +49,8 @@ export default function AboutUs() {
           <li><a href="/ethics-policy" className="text-blue-600 hover:underline">Editorial & Ethics Policy</a></li>
         </ul>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900">Contact Us</h2>
-        <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">Contact Us</h2>
+        <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg border border-gray-200">
           <p className="mb-2"><strong>Headquarters:</strong> [Insert Full Physical Address Here]</p>
           <p className="mb-2"><strong>General Inquiries:</strong> info@jagmarg.com</p>
           <p className="mb-2"><strong>News Tips:</strong> tips@jagmarg.com</p>

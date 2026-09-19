@@ -73,3 +73,4 @@ body {
 
 .nav-hindi-mode a, .nav-hindi-mode button, .nav-hindi-mode .cursor-pointer { font-size: 14px !important; }
 @media (min-width: 1280px) { .nav-hindi-mode a, .nav-hindi-mode button, .nav-hindi-mode .cursor-pointer { font-size: 15px !important; } }
+.dark .prose-invert * { color: inherit !important; }

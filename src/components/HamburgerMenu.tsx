@@ -119,11 +119,11 @@ export default function HamburgerMenu({ isOpen, onClose }: { isOpen: boolean; on
               onClick={onClose}
               className="absolute top-6 right-6 p-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors z-50"
             >
-              <X className="w-6 h-6 text-gray-800" />
+              <X className="w-6 h-6 text-gray-800 dark:text-gray-200" />
             </button>
 
             {/* Left Pane: Categories List & Mobile Dashboard */}
-            <div className="w-full md:w-1/3 border-r border-gray-100 dark:border-gray-800 h-full overflow-y-auto pt-16 pb-8 bg-gray-50 dark:bg-[#111111] flex flex-col">
+            <div className="w-full md:w-1/3 border-r border-gray-100 dark:border-gray-800 h-full overflow-y-auto pt-16 pb-8 bg-gray-50 dark:bg-gray-900 dark:bg-[#111111] flex flex-col">
               
               {/* MOBILE ONLY DASHBOARD (Hidden on Desktop) */}
               <div className="flex flex-col md:hidden px-6 mb-8 gap-4">
@@ -131,7 +131,7 @@ export default function HamburgerMenu({ isOpen, onClose }: { isOpen: boolean; on
                 <div className="flex items-center justify-between bg-white dark:bg-[#1A1A1A] p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-gray-100 dark:bg-[#222] rounded-full flex items-center justify-center">
-                      <User className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                      <User className="w-5 h-5 text-gray-600 dark:text-gray-400 dark:text-gray-300" />
                     </div>
                     <div className="flex flex-col">
                       {isLoggedIn ? (
@@ -150,9 +150,9 @@ export default function HamburgerMenu({ isOpen, onClose }: { isOpen: boolean; on
                   {/* Theme Toggle */}
                   <button 
                     onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-                    className="p-3 bg-gray-50 dark:bg-[#222] rounded-full hover:bg-gray-100 dark:hover:bg-[#333] transition-colors"
+                    className="p-3 bg-gray-50 dark:bg-gray-900 dark:bg-[#222] rounded-full hover:bg-gray-100 dark:hover:bg-[#333] transition-colors"
                   >
-                    {mounted && resolvedTheme === 'dark' ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-700" />}
+                    {mounted && resolvedTheme === 'dark' ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300" />}
                   </button>
                 </div>
 
@@ -215,7 +215,7 @@ export default function HamburgerMenu({ isOpen, onClose }: { isOpen: boolean; on
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: 'auto', opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
-                                        className="overflow-hidden bg-gray-50 dark:bg-[#111111]"
+                                        className="overflow-hidden bg-gray-50 dark:bg-gray-900 dark:bg-[#111111]"
                                       >
                                         <div className="px-5 py-3 flex flex-col gap-3 border-t border-gray-100 dark:border-gray-800">
                                           <Link
@@ -282,14 +282,14 @@ export default function HamburgerMenu({ isOpen, onClose }: { isOpen: boolean; on
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden bg-gray-50"
+                          className="overflow-hidden bg-gray-50 dark:bg-gray-900"
                         >
                           {Object.entries(statesData).map(([state, districts]) => (
                             <div key={state} className="flex flex-col pl-14 pr-10 border-t border-gray-200 py-3">
-                              <Link href={`/${locale}/india/${state.toLowerCase().replace(/\s+/g, '-')}`} onClick={onClose} className="text-lg font-bold text-gray-800 hover:text-[#D32F2F] mb-2">{getTranslatedUI(state, locale)}</Link>
+                              <Link href={`/${locale}/india/${state.toLowerCase().replace(/\s+/g, '-')}`} onClick={onClose} className="text-lg font-bold text-gray-800 dark:text-gray-200 hover:text-[#D32F2F] mb-2">{getTranslatedUI(state, locale)}</Link>
                               <div className="grid grid-cols-2 gap-2 mt-1">
                                 {(districts as any).map((dist: any) => (
-                                  <Link key={dist.slug} href={`/${locale}/india/${state.toLowerCase().replace(/\s+/g, '-')}/${dist.slug}`} onClick={onClose} className="text-sm text-gray-600 hover:text-[#D32F2F]">{dist.name}</Link>
+                                  <Link key={dist.slug} href={`/${locale}/india/${state.toLowerCase().replace(/\s+/g, '-')}/${dist.slug}`} onClick={onClose} className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#D32F2F]">{dist.name}</Link>
                                 ))}
                               </div>
                             </div>

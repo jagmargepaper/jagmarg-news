@@ -63,7 +63,7 @@ export default function AutoNextArticle({ nextSlug, nextTitle, locale }: { nextS
       <div className="flex justify-center gap-4">
         <button 
           onClick={() => { setIsVisible(false); setProgress(0); }} 
-          className="px-6 py-2 border border-gray-300 text-gray-600 font-bold uppercase tracking-widest text-xs rounded-sm hover:bg-gray-50"
+          className="px-6 py-2 border border-gray-300 text-gray-600 dark:text-gray-400 font-bold uppercase tracking-widest text-xs rounded-sm hover:bg-gray-50 dark:bg-gray-900"
         >
           Cancel
         </button>

@@ -241,7 +241,7 @@ export default function Header() {
                     {(session?.user as any)?.isPremium && (
                       <button 
                         onClick={() => alert('You are a Premium Member! Check your dashboard for details.')}
-                        className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black tracking-widest uppercase transition-all bg-yellow-400 text-black hover:bg-yellow-300"
+                        className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black tracking-widest uppercase transition-all bg-yellow-400 text-black dark:text-white hover:bg-yellow-300"
                       >
                         👑 Premium
                       </button>
@@ -306,10 +306,10 @@ export default function Header() {
             <nav className="hidden lg:flex items-center h-full flex-1 min-w-0">
               
               {/* Hamburger & Search */}
-              <button onClick={() => setIsMenuOpen(true)} className="h-full flex items-center px-1.5 xl:px-2.5 text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 transition-colors border-r border-gray-200">
+              <button onClick={() => setIsMenuOpen(true)} className="h-full flex items-center px-1.5 xl:px-2.5 text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 dark:bg-gray-900 transition-colors border-r border-gray-200">
                 <Menu className="w-5 h-5" />
               </button>
-              <button onClick={() => setIsSearchOpen(true)} className="h-full flex items-center px-1.5 xl:px-2.5 text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 transition-colors border-r border-gray-200">
+              <button onClick={() => setIsSearchOpen(true)} className="h-full flex items-center px-1.5 xl:px-2.5 text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 dark:bg-gray-900 transition-colors border-r border-gray-200">
                 <Search className="w-4 h-4" />
               </button>
 
@@ -317,7 +317,7 @@ export default function Header() {
               <Link 
                 href={`/${locale}`} 
                 onClick={() => handleEditionChange('National')}
-                className="h-full flex items-center px-1.5 xl:px-2 text-[10px] xl:text-[11px] font-black uppercase text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 transition-colors border-r border-gray-200 notranslate whitespace-nowrap flex-shrink-0"
+                className="h-full flex items-center px-1.5 xl:px-2 text-[10px] xl:text-[11px] font-black uppercase text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 dark:bg-gray-900 transition-colors border-r border-gray-200 notranslate whitespace-nowrap flex-shrink-0"
               >
                 {getTranslatedUI('Home', locale)}
               </Link>
@@ -351,7 +351,7 @@ export default function Header() {
                                 <Link 
                                   key={dist} 
                                   href={`/${locale}/state/${dist.toLowerCase()}`}
-                                  className="text-[11px] xl:text-[12px] font-bold text-gray-600 hover:text-[#D32F2F] hover:translate-x-1 transition-all notranslate whitespace-nowrap"
+                                  className="text-[11px] xl:text-[12px] font-bold text-gray-600 dark:text-gray-400 hover:text-[#D32F2F] hover:translate-x-1 transition-all notranslate whitespace-nowrap"
                                 >
                                   {dist}
                                 </Link>
@@ -383,7 +383,7 @@ export default function Header() {
                         className="absolute top-full left-0 w-[600px] bg-white border border-gray-200 shadow-2xl z-50 flex max-h-[70vh] overflow-hidden"
                       >
                         {/* LEFT COLUMN: States */}
-                        <div className="w-1/3 border-r border-gray-100 bg-gray-50 flex flex-col py-4 overflow-y-auto">
+                        <div className="w-1/3 border-r border-gray-100 bg-gray-50 dark:bg-gray-900 flex flex-col py-4 overflow-y-auto">
                           <div className="px-5 mb-3 text-xs font-black uppercase text-gray-400">States</div>
                           {Object.keys(statesData).map((state) => (
                             <div 
@@ -392,7 +392,7 @@ export default function Header() {
                               className={`px-5 py-2.5 cursor-pointer flex items-center justify-between transition-colors ${
                                 activeHoverState === state 
                                 ? 'bg-white border-l-4 border-[#D32F2F] text-[#D32F2F] font-bold shadow-sm' 
-                                : 'border-l-4 border-transparent text-gray-700 font-semibold hover:bg-gray-100'
+                                : 'border-l-4 border-transparent text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-100'
                               }`}
                             >
                               <Link href={getStateLink(state)} onClick={() => setIsAllStatesMenuHovered(false)}>
@@ -424,7 +424,7 @@ export default function Header() {
                                 key={dist.slug} 
                                 href={`/${locale}/india/${activeHoverState.toLowerCase().replace(/\s+/g, '-')}/${dist.slug}`}
                                 onClick={() => setIsAllStatesMenuHovered(false)}
-                                className="text-[13px] font-medium text-gray-600 hover:text-[#D32F2F] hover:translate-x-1 transition-transform whitespace-nowrap flex items-center gap-1.5"
+                                className="text-[13px] font-medium text-gray-600 dark:text-gray-400 hover:text-[#D32F2F] hover:translate-x-1 transition-transform whitespace-nowrap flex items-center gap-1.5"
                               >
                                 <div className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#D32F2F]" />
                                 {dist.name}
@@ -443,7 +443,7 @@ export default function Header() {
                 {/* 3. NATIONAL (Always next to State) */}
                 <Link 
                   href={`/${locale}/india/national`} 
-                  className="h-full flex items-center px-1.5 lg:px-2 text-[10px] lg:text-[11px] font-black uppercase text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 transition-colors border-r border-gray-200 notranslate whitespace-nowrap flex-shrink-0"
+                  className="h-full flex items-center px-1.5 lg:px-2 text-[10px] lg:text-[11px] font-black uppercase text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 dark:bg-gray-900 transition-colors border-r border-gray-200 notranslate whitespace-nowrap flex-shrink-0"
                 >
                   {getTranslatedUI('National', locale)}
                 </Link>
@@ -453,13 +453,13 @@ export default function Header() {
                   <Link 
                     key={cat} 
                     href={getCategoryLink(cat)}
-                    className="h-full flex items-center px-1.5 lg:px-2 text-[10px] lg:text-[11px] font-black uppercase text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 transition-colors border-r border-gray-200 last:border-r-0 notranslate whitespace-nowrap flex-shrink-0"
+                    className="h-full flex items-center px-1.5 lg:px-2 text-[10px] lg:text-[11px] font-black uppercase text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 dark:bg-gray-900 transition-colors border-r border-gray-200 last:border-r-0 notranslate whitespace-nowrap flex-shrink-0"
                   >
                     {getTranslatedUI(cat, locale)}
                   </Link>
                 ))}
 
-                <Link href={`/${locale}/web-stories`} className="h-full flex items-center px-1.5 lg:px-2 text-[10px] lg:text-[11px] font-black uppercase text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 transition-colors notranslate whitespace-nowrap flex-shrink-0">
+                <Link href={`/${locale}/web-stories`} className="h-full flex items-center px-1.5 lg:px-2 text-[10px] lg:text-[11px] font-black uppercase text-[#1A1A1A] hover:text-[#D32F2F] hover:bg-gray-50 dark:bg-gray-900 transition-colors notranslate whitespace-nowrap flex-shrink-0">
                   {getTranslatedUI('Web Stories', locale)}
                   <Sparkles className="w-3 h-3 ml-1 text-[#D32F2F] animate-pulse" />
                 </Link>
@@ -517,7 +517,7 @@ export default function Header() {
               <div className="flex items-center gap-1 -mr-2">
                 <button 
                   onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-                  className="p-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+                  className="p-2 text-gray-700 dark:text-gray-300 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
                 >
                   {mounted && resolvedTheme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                 </button>

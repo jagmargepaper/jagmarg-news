@@ -15,7 +15,7 @@ export default function NotFound() {
             </div>
             <span className="font-black text-2xl tracking-tight">Jagmarg<span className="text-[#D32F2F]">.</span></span>
           </Link>
-          <Link href="/search" className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+          <Link href="/search" className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-400 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
             <Search className="w-5 h-5" />
           </Link>
         </header>
@@ -47,7 +47,7 @@ export default function NotFound() {
               
               <Link 
                 href="/" 
-                className="group flex items-center justify-center gap-3 px-6 py-4 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white font-bold rounded-xl hover:bg-gray-50 dark:hover:bg-[#222] border border-gray-200 dark:border-gray-800 transition-all shadow-sm active:scale-95"
+                className="group flex items-center justify-center gap-3 px-6 py-4 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white font-bold rounded-xl hover:bg-gray-50 dark:bg-gray-900 dark:hover:bg-[#222] border border-gray-200 dark:border-gray-800 transition-all shadow-sm active:scale-95"
               >
                 <TrendingUp className="w-5 h-5 text-[#D32F2F] group-hover:scale-110 transition-transform" />
                 <span>Trending News</span>

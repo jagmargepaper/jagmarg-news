@@ -105,12 +105,12 @@ export default function SearchOverlay({ isOpen, onClose }: { isOpen: boolean; on
                 onClick={onClose}
                 className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors ml-4"
               >
-                <X className="w-6 h-6 text-gray-600" />
+                <X className="w-6 h-6 text-gray-600 dark:text-gray-400" />
               </button>
             </div>
 
             {/* Dynamic Content Area */}
-            <div className="p-8 bg-gray-50 min-h-[400px]">
+            <div className="p-8 bg-gray-50 dark:bg-gray-900 min-h-[400px]">
               {query.length === 0 ? (
                 // ZERO-STATE: Trending & Recent
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -123,7 +123,7 @@ export default function SearchOverlay({ isOpen, onClose }: { isOpen: boolean; on
                         <button 
                           key={i}
                           onClick={() => { setQuery(term); inputRef.current?.focus(); }}
-                          className="text-left text-lg font-bold text-gray-700 hover:text-[#D32F2F] transition-colors"
+                          className="text-left text-lg font-bold text-gray-700 dark:text-gray-300 hover:text-[#D32F2F] transition-colors"
                         >
                           {term}
                         </button>
@@ -135,10 +135,10 @@ export default function SearchOverlay({ isOpen, onClose }: { isOpen: boolean; on
                       <Clock className="w-4 h-4 mr-2" /> Recent Searches
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 cursor-pointer hover:border-[#D32F2F] hover:text-[#D32F2F] transition-colors">
+                      <span className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 dark:text-gray-400 cursor-pointer hover:border-[#D32F2F] hover:text-[#D32F2F] transition-colors">
                         Olympic Medals
                       </span>
-                      <span className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 cursor-pointer hover:border-[#D32F2F] hover:text-[#D32F2F] transition-colors">
+                      <span className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 dark:text-gray-400 cursor-pointer hover:border-[#D32F2F] hover:text-[#D32F2F] transition-colors">
                         Stock Market
                       </span>
                     </div>

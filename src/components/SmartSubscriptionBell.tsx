@@ -262,7 +262,7 @@ export default function SmartSubscriptionBell({ locale = 'hi' }: { locale?: stri
             >
               <button 
                 onClick={() => setShowEmailModal(false)}
-                className="absolute top-4 right-4 text-gray-500 hover:text-black dark:hover:text-white"
+                className="absolute top-4 right-4 text-gray-500 hover:text-black dark:text-white dark:hover:text-white"
               >
                 <X size={24} />
               </button>
@@ -290,7 +290,7 @@ export default function SmartSubscriptionBell({ locale = 'hi' }: { locale?: stri
                       value={emailValue}
                       onChange={(e) => setEmailValue(e.target.value)}
                       placeholder={t.emailPlaceholder}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#0f0f0f] text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-[#D32F2F]"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 dark:bg-[#0f0f0f] text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-[#D32F2F]"
                     />
                     <button 
                       type="submit" 

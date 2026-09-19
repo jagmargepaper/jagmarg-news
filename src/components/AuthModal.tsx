@@ -131,7 +131,7 @@ export default function AuthModal() {
         {/* Close Button */}
         <button 
           onClick={closeModal}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-full p-1.5 transition-colors z-10"
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 dark:text-gray-200 bg-gray-100 hover:bg-gray-200 rounded-full p-1.5 transition-colors z-10"
         >
           <X className="w-5 h-5" />
         </button>
@@ -146,7 +146,7 @@ export default function AuthModal() {
             <button 
               onClick={handleGoogleLogin}
               disabled={loading}
-              className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors mb-6 shadow-sm"
+              className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 text-gray-700 dark:text-gray-300 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 dark:bg-gray-900 transition-colors mb-6 shadow-sm"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -205,11 +205,11 @@ export default function AuthModal() {
                   <div className="flex items-center gap-3">
                     <input type="radio" name="plan" value="29" className="w-4 h-4 text-[#D32F2F] accent-[#D32F2F]" />
                     <div>
-                      <h4 className="font-bold text-gray-900 leading-none">Monthly</h4>
+                      <h4 className="font-bold text-gray-900 dark:text-gray-100 leading-none">Monthly</h4>
                       <span className="text-[10px] text-gray-500 font-medium">Billed monthly</span>
                     </div>
                   </div>
-                  <span className="text-lg font-black text-gray-900">₹29</span>
+                  <span className="text-lg font-black text-gray-900 dark:text-gray-100">₹29</span>
                 </label>
 
                 {/* Plan 2 */}
@@ -217,11 +217,11 @@ export default function AuthModal() {
                   <div className="flex items-center gap-3">
                     <input type="radio" name="plan" value="99" className="w-4 h-4 text-[#D32F2F] accent-[#D32F2F]" />
                     <div>
-                      <h4 className="font-bold text-gray-900 leading-none">6 Months</h4>
+                      <h4 className="font-bold text-gray-900 dark:text-gray-100 leading-none">6 Months</h4>
                       <span className="text-[10px] text-gray-500 font-medium">Billed semi-annually</span>
                     </div>
                   </div>
-                  <span className="text-lg font-black text-gray-900">₹99</span>
+                  <span className="text-lg font-black text-gray-900 dark:text-gray-100">₹99</span>
                 </label>
 
                 {/* Plan 3 */}

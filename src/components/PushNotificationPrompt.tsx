@@ -47,7 +47,7 @@ export default function PushNotificationPrompt() {
     <div className="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:w-[400px] bg-white dark:bg-[#1A1A1A] rounded-xl shadow-2xl border border-gray-100 dark:border-gray-800 p-6 z-[9999] animate-in slide-in-from-bottom-5">
       <button 
         onClick={handleClose}
-        className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 dark:hover:text-white"
+        className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 dark:text-gray-200 dark:hover:text-white"
       >
         <X className="w-5 h-5" />
       </button>

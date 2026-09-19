@@ -76,7 +76,7 @@ export default function EpaperAndVideo({ videos = [] }: { videos?: {id: string, 
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                     
                     <div className="absolute top-4 left-0 right-0 text-center">
-                      <span className="bg-white text-black px-4 py-1 font-black text-xl tracking-tighter uppercase shadow-md">
+                      <span className="bg-white text-black dark:text-white px-4 py-1 font-black text-xl tracking-tighter uppercase shadow-md">
                         जग मार्ग
                       </span>
                     </div>

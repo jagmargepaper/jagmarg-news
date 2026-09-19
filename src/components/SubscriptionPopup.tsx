@@ -94,7 +94,7 @@ export default function SubscriptionPopup() {
           <div className="p-6 relative">
             <button 
               onClick={handleDismiss}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 bg-gray-50 hover:bg-gray-100 p-1.5 rounded-full transition-all"
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 p-1.5 rounded-full transition-all"
             >
               <X className="w-4 h-4" />
             </button>
@@ -113,7 +113,7 @@ export default function SubscriptionPopup() {
                 <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-4">
                   <CheckCircle2 className="w-8 h-8 text-green-500" />
                 </div>
-                <h4 className="font-bold text-gray-900 text-lg">Subscribed!</h4>
+                <h4 className="font-bold text-gray-900 dark:text-gray-100 text-lg">Subscribed!</h4>
                 <p className="text-xs text-gray-500 mt-1">Thank you for joining Jagmarg News.</p>
               </motion.div>
             ) : (
@@ -123,14 +123,14 @@ export default function SubscriptionPopup() {
                   <button 
                     type="button"
                     onClick={() => { setActiveTab('whatsapp'); setInputValue(''); }}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2 text-xs font-bold rounded-md transition-all ${activeTab === 'whatsapp' ? 'bg-white text-[#25D366] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                    className={`flex-1 flex items-center justify-center gap-2 py-2 text-xs font-bold rounded-md transition-all ${activeTab === 'whatsapp' ? 'bg-white text-[#25D366] shadow-sm' : 'text-gray-500 hover:text-gray-700 dark:text-gray-300'}`}
                   >
                     <MessageCircle className="w-4 h-4" /> WhatsApp
                   </button>
                   <button 
                     type="button"
                     onClick={() => { setActiveTab('email'); setInputValue(''); }}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2 text-xs font-bold rounded-md transition-all ${activeTab === 'email' ? 'bg-white text-[#D32F2F] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                    className={`flex-1 flex items-center justify-center gap-2 py-2 text-xs font-bold rounded-md transition-all ${activeTab === 'email' ? 'bg-white text-[#D32F2F] shadow-sm' : 'text-gray-500 hover:text-gray-700 dark:text-gray-300'}`}
                   >
                     <Mail className="w-4 h-4" /> Email
                   </button>
@@ -144,7 +144,7 @@ export default function SubscriptionPopup() {
                       placeholder={activeTab === 'email' ? 'your@email.com' : '+91 9876543210'}
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
-                      className="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-[#D32F2F] focus:border-[#D32F2F] block p-3 pr-10 outline-none transition-all"
+                      className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 text-gray-900 dark:text-gray-100 text-sm rounded-lg focus:ring-[#D32F2F] focus:border-[#D32F2F] block p-3 pr-10 outline-none transition-all"
                     />
                   </div>
                   

@@ -36,16 +36,21 @@ export default function PaywalledArticleContent({
     }
   }, [postId, trackArticleRead]);
 
+  // Clean up WP inline black/dark colors so dark mode prose-invert works
+  const cleanHtml = content
+    .replace(/style="[^"]*color:\s*(?:black|#000000|#222222|#333333)[^"]*"/gi, '')
+    .replace(/color:\s*(?:black|#000000|#222222|#333333);?/gi, '');
+
   if (isBlocked) {
     return (
       <div id={id} className="relative mt-4">
         {/* Blurred Content */}
         <div 
           className="article-content prose prose-lg dark:prose-invert max-w-none 
-            prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white
-            prose-p:text-gray-800 dark:prose-p:text-gray-200 blur-[6px] select-none opacity-40 pointer-events-none
+            prose-headings:font-bold prose-headings:text-gray-900 dark:text-gray-100 dark:prose-headings:text-white
+            prose-p:text-gray-800 dark:text-gray-200 dark:prose-p:text-gray-200 blur-[6px] select-none opacity-40 pointer-events-none
             h-[400px] overflow-hidden"
-          dangerouslySetInnerHTML={{ __html: content }}
+          dangerouslySetInnerHTML={{ __html: cleanHtml }}
         />
         
         {/* Paywall Overlay */}

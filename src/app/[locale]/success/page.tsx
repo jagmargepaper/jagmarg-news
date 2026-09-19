@@ -16,7 +16,7 @@ export default async function SuccessPage({ params }: { params: Promise<{ locale
           <CheckCircle className="w-10 h-10 text-green-500" />
         </div>
         <h1 className="text-3xl font-black text-[#1A1A1A] uppercase tracking-tight mb-4">Payment Successful!</h1>
-        <p className="text-gray-600 mb-8">
+        <p className="text-gray-600 dark:text-gray-400 mb-8">
           Welcome to Jagmarg Premium. Your subscription is now active. You can enjoy an ad-free experience and premium content.
         </p>
         <Link 

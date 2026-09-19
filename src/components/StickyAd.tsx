@@ -24,7 +24,7 @@ export default function StickyAd() {
           onClick={() => setIsVisible(false)} 
           className="absolute -top-1 -right-1 bg-gray-200 p-0.5 rounded-full z-10"
         >
-          <X className="w-3 h-3 text-gray-700" />
+          <X className="w-3 h-3 text-gray-700 dark:text-gray-300" />
         </button>
         <AdSlot size="mobile_banner" id="sticky-bottom" className="my-0" />
       </div>

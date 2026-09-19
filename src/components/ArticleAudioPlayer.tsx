@@ -174,7 +174,7 @@ export default function ArticleAudioPlayer({ articleText, contentSelector, isPre
 
   return (
     <>
-      <div ref={containerRef} className="flex flex-col gap-3 bg-gray-50 border border-gray-200 rounded-2xl p-4 mb-6 shadow-sm">
+      <div ref={containerRef} className="flex flex-col gap-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 rounded-2xl p-4 mb-6 shadow-sm">
         
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -204,7 +204,7 @@ export default function ArticleAudioPlayer({ articleText, contentSelector, isPre
               <a 
                 href={downloadUrl} 
                 download="jagmarg-news.mp3"
-                className="w-9 h-9 rounded-full flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors shrink-0"
+                className="w-9 h-9 rounded-full flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 dark:text-gray-300 transition-colors shrink-0"
                 title="Download Podcast"
               >
                 <Download className="w-4 h-4" />
@@ -223,7 +223,7 @@ export default function ArticleAudioPlayer({ articleText, contentSelector, isPre
 
               {isSpeedDropdownOpen && (
                 <div className="absolute bottom-full right-0 mb-2 w-36 bg-white border border-gray-200 rounded-lg shadow-xl overflow-hidden z-50 animate-in fade-in slide-in-from-bottom-2">
-                  <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 py-2 border-b border-gray-100 bg-gray-50">
+                  <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 py-2 border-b border-gray-100 bg-gray-50 dark:bg-gray-900">
                     Playback Speed
                   </div>
                   <div className="flex flex-col py-1">
@@ -231,7 +231,7 @@ export default function ArticleAudioPlayer({ articleText, contentSelector, isPre
                       <button
                         key={s}
                         onClick={() => handleSpeedChange(s)}
-                        className={`px-3 py-2 text-left text-xs font-black transition-colors ${playbackRate === s ? 'text-[#D32F2F] bg-red-50' : 'text-gray-700 hover:bg-gray-100'}`}
+                        className={`px-3 py-2 text-left text-xs font-black transition-colors ${playbackRate === s ? 'text-[#D32F2F] bg-red-50' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100'}`}
                       >
                         {s === 1 ? 'Normal' : `${s}x`}
                       </button>
@@ -292,7 +292,7 @@ export default function ArticleAudioPlayer({ articleText, contentSelector, isPre
 
             <button 
               onClick={() => setShowSticky(false)}
-              className="w-8 h-8 shrink-0 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
+              className="w-8 h-8 shrink-0 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>

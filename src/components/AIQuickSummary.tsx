@@ -92,7 +92,7 @@ export default function AIQuickSummary({ contentSelector, isPremium = false, loc
       ) : (
         <ul className="space-y-3 mt-3">
           {summary.map((point, index) => (
-            <li key={index} className="flex gap-3 text-[15px] text-gray-700 leading-snug">
+            <li key={index} className="flex gap-3 text-[15px] text-gray-700 dark:text-gray-300 leading-snug">
               <span className="text-[#D32F2F] font-black shrink-0">•</span>
               <span dangerouslySetInnerHTML={{ __html: point.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
             </li>

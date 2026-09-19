@@ -22,7 +22,7 @@ export default function ReaderModeToggle() {
   return (
     <button 
       onClick={() => setIsReaderMode(!isReaderMode)}
-      className={`fixed bottom-6 right-6 z-[100] w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 ${isReaderMode ? 'bg-[#1A1A1A] text-white rotate-12 scale-110' : 'bg-white text-[#1A1A1A] border border-gray-200 hover:bg-gray-50 hover:scale-105'}`}
+      className={`fixed bottom-6 right-6 z-[100] w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 ${isReaderMode ? 'bg-[#1A1A1A] text-white rotate-12 scale-110' : 'bg-white text-[#1A1A1A] border border-gray-200 hover:bg-gray-50 dark:bg-gray-900 hover:scale-105'}`}
       title={isReaderMode ? "Exit Reader Mode" : "Enter Reader Mode"}
     >
       <BookOpen className="w-6 h-6" />
