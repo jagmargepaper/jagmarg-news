@@ -22,7 +22,7 @@ export default function AdSlot({ id, size, className = "" }: AdSlotProps) {
   // Define strict width and height to prevent CLS (Cumulative Layout Shift)
   const sizeClasses = {
     leaderboard: "w-[728px] h-[90px] hidden md:flex",
-    header_side: "w-full max-w-[360px] xl:max-w-[400px] h-[90px] hidden lg:flex",
+    header_side: "w-full max-w-[468px] h-[90px] hidden lg:flex",
     billboard: "w-[970px] h-[250px] hidden lg:flex",
     mrec: "w-[300px] h-[250px] flex",
     halfpage: "w-[300px] h-[600px] hidden md:flex",
@@ -33,7 +33,7 @@ export default function AdSlot({ id, size, className = "" }: AdSlotProps) {
 
   const dimensions = {
     leaderboard: "728 x 90",
-    header_side: "300 x 90",
+    header_side: "Responsive (max 468x90)",
     billboard: "970 x 250",
     mrec: "300 x 250",
     halfpage: "300 x 600",
