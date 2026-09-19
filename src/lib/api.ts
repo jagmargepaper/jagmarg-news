@@ -149,7 +149,7 @@ export async function fetchSearchResults(query: string, limit = 15, page = 1) {
   }
 }
 
-export async function getArticleUrl(post: any, locale: string = 'hi') {
+export function getArticleUrl(post: any, locale: string = 'hi') {
   // Try to find the category slug to build the correct URL
   // If the post has embedded terms (categories), use the first one
   let categorySlug = 'uncategorized';
