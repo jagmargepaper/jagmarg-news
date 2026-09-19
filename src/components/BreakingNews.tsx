@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 interface BreakingNewsProps {
   newsItems?: string[];
@@ -13,7 +14,29 @@ const defaultItems = [
   "Sports Update: Indian contingent secures another Gold in the Asian Athletics Championship.",
 ];
 
-export default function BreakingNews({ newsItems = defaultItems }: BreakingNewsProps) {
+export default function BreakingNews({ newsItems }: BreakingNewsProps) {
+  const [items, setItems] = useState<string[]>(newsItems || defaultItems);
+
+  useEffect(() => {
+    // If newsItems is not provided, fetch the latest posts as breaking news
+    if (!newsItems || newsItems.length === 0) {
+      const fetchHeadlines = async () => {
+        try {
+          const res = await fetch('https://jagmarg.com/wp-json/wp/v2/posts?per_page=5');
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            const titles = data.map(p => p.title.rendered.replace(/&[^;]+;/g, '')).filter(Boolean);
+            if (titles.length > 0) setItems(titles);
+          }
+        } catch (e) {
+          console.error("Failed to fetch breaking news", e);
+        }
+      };
+      fetchHeadlines();
+    } else {
+      setItems(newsItems);
+    }
+  }, [newsItems]);
 
   return (
     <div className="w-full bg-[#1A1A1A] flex items-center h-10 overflow-hidden border-b border-gray-800 relative z-40">
@@ -33,14 +56,14 @@ export default function BreakingNews({ newsItems = defaultItems }: BreakingNewsP
           transition={{ repeat: Infinity, ease: "linear", duration: 35 }}
         >
           {/* First Set of News */}
-          {newsItems.map((item, i) => (
+          {items.map((item, i) => (
             <div key={i} className="flex items-center gap-3 text-gray-200 hover:text-white cursor-pointer transition-colors text-xs font-semibold tracking-wide">
               <span className="w-1.5 h-1.5 bg-[#FFC107] rounded-full animate-pulse"></span>
               {item}
             </div>
           ))}
           {/* Duplicated Set for Seamless Infinite Loop */}
-          {newsItems.map((item, i) => (
+          {items.map((item, i) => (
             <div key={`dup-${i}`} className="flex items-center gap-3 text-gray-200 hover:text-white cursor-pointer transition-colors text-xs font-semibold tracking-wide">
               <span className="w-1.5 h-1.5 bg-[#FFC107] rounded-full animate-pulse"></span>
               {item}

@@ -72,11 +72,8 @@ export default async function Home({ params }: Props) {
       <Script id="org-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       
       <main className="min-h-screen bg-[#F4F4F4] dark:bg-[#0A0A0A] pb-24">
-        {/* 1. BREAKING NEWS TICKER */}
-        <BreakingNews newsItems={breakingNewsTitles.length > 0 ? breakingNewsTitles : undefined} />
-
-        {/* 2. WEB STORIES ROW */}
-        <div className="mt-6">
+        {/* WEB STORIES ROW */}
+        <div className="mt-4">
           <WebStoriesRow locale={locale} />
         </div>
 

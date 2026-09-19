@@ -9,6 +9,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import SearchOverlay from '@/components/SearchOverlay';
 import HamburgerMenu from '@/components/HamburgerMenu';
 import AdSlot from '@/components/AdSlot';
+import BreakingNews from '@/components/BreakingNews';
 import { useAuthModal } from '@/context/AuthModalContext';
 import { useSession, signOut } from 'next-auth/react';
 import { useTheme } from 'next-themes';
@@ -567,10 +568,13 @@ export default function Header() {
             {/* Swipe Hint Gradient */}
             <div className="absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-white dark:from-[#0A0A0A] to-transparent pointer-events-none" />
           </div>
+
+          {/* Sticky Gadgets & Breaking News */}
+          <TopGadgets />
+          <BreakingNews />
         </div>
       </div>
 
-      <TopGadgets />
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       <HamburgerMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </>
