@@ -5,8 +5,8 @@ import WebStoriesRow from '@/components/WebStoriesRow';
 import EpaperAndVideo from '@/components/EpaperAndVideo';
 import HeroBentoGrid from '@/components/HeroBentoGrid';
 import AdSlot from '@/components/AdSlot';
-import NewsFeedLayout from '@/components/NewsFeedLayout';
-import { fetchPosts } from '@/lib/api';
+import { fetchPosts, fetchCategories } from '@/lib/api';
+import HomeCategoryFeed from '@/components/HomeCategoryFeed';
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -27,9 +27,13 @@ export default async function Home({ params }: Props) {
   const resolvedParams = await params;
   const locale = resolvedParams.locale || 'hi';
   
-  // Fetch posts for the page
-  const posts = await fetchPosts(28);
+  // Fetch posts for the page (Hero & Breaking)
+  const posts = await fetchPosts(15);
   const breakingNewsTitles = posts.slice(0, 5).map((p: any) => p.title.rendered.replace(/&[^;]+;/g, '')).filter(Boolean);
+
+  // Fetch initial top 5 categories for the infinite scroll
+  const initialCategories = await fetchCategories(undefined, 5);
+  const filteredCategories = initialCategories.filter((c: any) => c.slug !== 'uncategorized');
 
   // Generate WebSite Schema for Google
   const jsonLd = {
@@ -64,7 +68,7 @@ export default async function Home({ params }: Props) {
       <Script id="website-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Script id="org-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       
-      <main className="min-h-screen bg-[#F4F4F4] dark:bg-[#0A0A0A]">
+      <main className="min-h-screen bg-[#F4F4F4] dark:bg-[#0A0A0A] pb-24">
         {/* 1. BREAKING NEWS TICKER */}
         <BreakingNews newsItems={breakingNewsTitles.length > 0 ? breakingNewsTitles : undefined} />
 
@@ -85,8 +89,10 @@ export default async function Home({ params }: Props) {
         {/* 5. EPAPER AND VIDEO */}
         <EpaperAndVideo />
 
-        {/* 6. REMAINING NEWS FEED (INFINITE SCROLL) */}
-        <NewsFeedLayout initialPosts={posts.slice(4)} locale={locale} />
+        {/* 6. CATEGORY FEED (INFINITE SCROLL) */}
+        <div className="mt-12">
+          <HomeCategoryFeed initialCategories={filteredCategories} locale={locale} />
+        </div>
       </main>
     </>
   );
