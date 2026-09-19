@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { fetchPostBySlug, fetchPageBySlug, fetchCategoryBySlug, fetchPostsByCategory, fetchTagBySlug, fetchPostsByTag, getArticleUrl } from '@/lib/api';
 import Image from 'next/image';
@@ -10,6 +11,7 @@ import InfiniteArticleScroll from '@/components/InfiniteArticleScroll';
 import NewsFeedLayout from '@/components/NewsFeedLayout';
 import SidebarWidget from '@/components/SidebarWidget';
 import PaywalledArticleContent from '@/components/PaywalledArticleContent';
+import SidebarRelatedNews from '@/components/SidebarRelatedNews';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string[] }> }): Promise<Metadata> {
   const resolvedParams = await params;
@@ -71,11 +73,6 @@ async function PostTemplate({ post, locale, currentSlug }: { post: any, locale: 
   });
   
   const category = post._embedded?.['wp:term']?.[0]?.[0];
-  
-  // Fetch related posts for the right sidebar
-  const relatedPosts = category ? await fetchPostsByCategory(category.id, 5, 1) : [];
-  // Filter out current post
-  const sidebarPosts = relatedPosts.filter((p: any) => p.slug !== currentSlug).slice(0, 4);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0A0A0A] pt-12 pb-16">
@@ -161,10 +158,10 @@ async function PostTemplate({ post, locale, currentSlug }: { post: any, locale: 
               <span className="relative z-10 text-xs font-black tracking-widest text-gray-300 dark:text-gray-600">300 x 250</span>
             </div>
 
-            {sidebarPosts.length > 0 && (
-              <div className="sticky top-24 h-fit pb-12">
-                <SidebarWidget title="Related News" posts={sidebarPosts} />
-              </div>
+            {category && (
+              <Suspense fallback={<div className="animate-pulse w-full h-[400px] bg-gray-200 dark:bg-gray-800 rounded-xl"></div>}>
+                <SidebarRelatedNews categoryId={category.id} currentSlug={currentSlug} />
+              </Suspense>
             )}
           </div>
 

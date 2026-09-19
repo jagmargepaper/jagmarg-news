@@ -48,7 +48,7 @@ export async function fetchCategoriesBySlugs(slugs: string[]) {
 export async function fetchPostBySlug(slug: string) {
   try {
     const res = await fetch(`${WP_API_URL}/posts?slug=${slug}&_embed`, {
-      next: { revalidate: 60 }
+      next: { revalidate: 300 }
     });
     if (!res.ok) throw new Error('Failed to fetch post');
     const posts = await res.json();
@@ -61,7 +61,9 @@ export async function fetchPostBySlug(slug: string) {
 
 export async function fetchCategoryBySlug(slug: string) {
   try {
-    const res = await fetch(`${WP_API_URL}/categories?slug=${slug}`);
+    const res = await fetch(`${WP_API_URL}/categories?slug=${slug}`, {
+      next: { revalidate: 3600 }
+    });
     const cats = await res.json();
     return cats.length > 0 ? cats[0] : null;
   } catch (error) {
@@ -71,7 +73,9 @@ export async function fetchCategoryBySlug(slug: string) {
 
 export async function fetchCategoryById(id: number) {
   try {
-    const res = await fetch(`${WP_API_URL}/categories/${id}`);
+    const res = await fetch(`${WP_API_URL}/categories/${id}`, {
+      next: { revalidate: 3600 }
+    });
     const cat = await res.json();
     return cat.id ? cat : null;
   } catch (error) {
@@ -81,7 +85,9 @@ export async function fetchCategoryById(id: number) {
 
 export async function fetchChildCategories(parentId: number) {
   try {
-    const res = await fetch(`${WP_API_URL}/categories?parent=${parentId}&hide_empty=false`);
+    const res = await fetch(`${WP_API_URL}/categories?parent=${parentId}&hide_empty=false`, {
+      next: { revalidate: 3600 }
+    });
     return await res.json();
   } catch (error) {
     return [];
@@ -91,7 +97,7 @@ export async function fetchChildCategories(parentId: number) {
 export async function fetchPostsByCategory(categoryId: number, limit = 15, page = 1) {
   try {
     const res = await fetch(`${WP_API_URL}/posts?categories=${categoryId}&per_page=${limit}&page=${page}&_embed`, {
-      next: { revalidate: 60 }
+      next: { revalidate: 300 }
     });
     return await res.json();
   } catch (error) {
@@ -103,7 +109,9 @@ export async function fetchPostsByCategory(categoryId: number, limit = 15, page 
 // Or we can query categories for states if they are parent categories. We'll support both via tags for now.
 export async function fetchTagBySlug(slug: string) {
   try {
-    const res = await fetch(`${WP_API_URL}/tags?slug=${slug}`);
+    const res = await fetch(`${WP_API_URL}/tags?slug=${slug}`, {
+      next: { revalidate: 3600 }
+    });
     const tags = await res.json();
     return tags.length > 0 ? tags[0] : null;
   } catch (error) {
@@ -114,7 +122,7 @@ export async function fetchTagBySlug(slug: string) {
 export async function fetchPostsByTag(tagId: number, limit = 15, page = 1) {
   try {
     const res = await fetch(`${WP_API_URL}/posts?tags=${tagId}&per_page=${limit}&page=${page}&_embed`, {
-      next: { revalidate: 60 }
+      next: { revalidate: 300 }
     });
     return await res.json();
   } catch (error) {
@@ -123,7 +131,7 @@ export async function fetchPostsByTag(tagId: number, limit = 15, page = 1) {
 }
 export async function fetchPageBySlug(slug: string) {
   try {
-    const res = await fetch(`${WP_API_URL}/pages?slug=${slug}&_embed`, { next: { revalidate: 60 } });
+    const res = await fetch(`${WP_API_URL}/pages?slug=${slug}&_embed`, { next: { revalidate: 3600 } });
     const pages = await res.json();
     return pages.length > 0 ? pages[0] : null;
   } catch (error) {
