@@ -297,8 +297,13 @@ export default function Header() {
           </div>
         </div>
 
+      </div> {/* END NON-STICKY TOP SECTION */}
+
+      {/* STICKY BOTTOM SECTION (Nav + Gadgets + Breaking News) */}
+      <div className="w-full bg-white dark:bg-[#0A0A0A] border-b-2 border-[#1A1A1A] dark:border-gray-800 sticky top-0 z-[60] flex flex-col">
+        
         {/* 3. CONTEXTUAL NAVIGATION BAR */}
-        <div className="w-full bg-white dark:bg-[#0A0A0A] border-b-2 border-[#1A1A1A] dark:border-gray-800 sticky top-0 z-40">
+        <div className="w-full">
           <div className="max-w-[1400px] mx-auto px-6 h-12 flex items-center justify-between">
             
             <nav className="hidden lg:flex items-center h-full flex-1 min-w-0">
