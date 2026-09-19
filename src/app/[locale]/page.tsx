@@ -5,7 +5,7 @@ import WebStoriesRow from '@/components/WebStoriesRow';
 import EpaperAndVideo from '@/components/EpaperAndVideo';
 import HeroBentoGrid from '@/components/HeroBentoGrid';
 import AdSlot from '@/components/AdSlot';
-import { fetchPosts, fetchCategories } from '@/lib/api';
+import { fetchPosts, fetchCategories, getLatestYouTubeVideos } from '@/lib/api';
 import HomeCategoryFeed from '@/components/HomeCategoryFeed';
 
 type Props = {
@@ -34,6 +34,9 @@ export default async function Home({ params }: Props) {
   // Fetch initial top 5 categories for the infinite scroll
   const initialCategories = await fetchCategories(undefined, 5);
   const filteredCategories = initialCategories.filter((c: any) => c.slug !== 'uncategorized');
+
+  // Fetch latest YouTube videos for the Video section
+  const youtubeVideos = await getLatestYouTubeVideos('UC2KaK9KRELIn6e7LtiTRevw');
 
   // Generate WebSite Schema for Google
   const jsonLd = {
@@ -87,7 +90,7 @@ export default async function Home({ params }: Props) {
         </div>
 
         {/* 5. EPAPER AND VIDEO */}
-        <EpaperAndVideo />
+        <EpaperAndVideo videos={youtubeVideos} />
 
         {/* 6. CATEGORY FEED (INFINITE SCROLL) */}
         <div className="mt-12">

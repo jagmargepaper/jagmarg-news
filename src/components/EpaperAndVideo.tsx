@@ -4,7 +4,7 @@ import { ArrowRight, PlayCircle, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useRef } from 'react';
 import Image from 'next/image';
 
-export default function EpaperAndVideo() {
+export default function EpaperAndVideo({ videos = [] }: { videos?: {id: string, title: string}[] }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
@@ -19,7 +19,8 @@ export default function EpaperAndVideo() {
     }
   };
 
-  const youtubeVideos = [
+  // Fallback to placeholders if no videos are returned
+  const youtubeVideos = videos.length > 0 ? videos : [
     { id: 'dQw4w9WgXcQ', title: 'Jagmarg Exclusive: CM Meeting Highlights' },
     { id: 'jNQXAC9IVRw', title: 'Special Report: Upcoming Elections 2026' },
     { id: 'tPEE9ZwTmy0', title: 'Daily News Briefing - Top 10 Stories' },
